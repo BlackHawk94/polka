@@ -1,7 +1,8 @@
 var express = require('express'),
     routes  = require('./routes'),
     admin   = require('./routes/admin.js'),
-    https    = require('https'),
+    https   = require('https'),
+    http    = require('http'),
     path    = require('path'),
     io      = require('socket.io');
 
@@ -35,7 +36,7 @@ app.get ('/dump',    routes.dump);
 app.get ('/admin',              admin.index);
 app.post('/admin/control/next', admin.next);
 
-var server = https.createServer(app);
+var server = http.createServer(app);
 var socket = io.listen(server);
 
 var manager  = require('./lib/clientsManager.js');
