@@ -40,7 +40,7 @@ app.post('/admin/control/next', admin.next);
 var server = http.createServer(app).listen(8080);
 var server2 = https.createServer(app).listen(443);
 var socket = io.listen(server);
-var socket2 = io.listen(server2);
+// var socket2 = io.listen(server2);
 
 var manager  = require('./lib/clientsManager.js');
 var playlist = require('./lib/playlist.js');
@@ -49,9 +49,6 @@ server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
 
-server2.listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
 
 playlist.events.on('next', function (track) {
     manager.forEachClientSocket(function (client) {
