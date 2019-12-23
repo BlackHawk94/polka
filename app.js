@@ -35,7 +35,7 @@ app.get ('/dump',    routes.dump);
 app.get ('/admin',              admin.index);
 app.post('/admin/control/next', admin.next);
 
-var server = http.createServer(app);
+var server = https.createServer(app);
 var socket = io.listen(server);
 
 var manager  = require('./lib/clientsManager.js');
