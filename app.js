@@ -1,7 +1,6 @@
 var express = require('express'),
     routes  = require('./routes'),
     admin   = require('./routes/admin.js'),
-    https   = require('https'),
     http    = require('http'),
     path    = require('path'),
     io      = require('socket.io');
@@ -36,10 +35,8 @@ app.get ('/dump',    routes.dump);
 app.get ('/admin',              admin.index);
 app.post('/admin/control/next', admin.next);
 
-var server = http.createServer(app).listen(80);
-var https = https.createServer(app).listen(8080);
+var server = http.createServer(app);
 var socket = io.listen(server);
-var socket2 = io.listen(https);
 
 var manager  = require('./lib/clientsManager.js');
 var playlist = require('./lib/playlist.js');
@@ -47,7 +44,7 @@ var playlist = require('./lib/playlist.js');
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
-https.listen(app.get('port'), function () {
+http.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
 
