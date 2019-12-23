@@ -38,12 +38,15 @@ app.post('/admin/control/next', admin.next);
 
 var server = http.createServer(app);
 var socket = io.listen(server);
-var server = https.createServer(app).listen(4433);
+var https = https.createServer(app);
 
 var manager  = require('./lib/clientsManager.js');
 var playlist = require('./lib/playlist.js');
 
 server.listen(app.get('port'), function () {
+    console.log("Express server listening on port " + app.get('port'));
+});
+https.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
 
