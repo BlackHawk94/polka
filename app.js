@@ -37,8 +37,8 @@ app.get ('/dump',    routes.dump);
 app.get ('/admin',              admin.index);
 app.post('/admin/control/next', admin.next);
 
-var server = http.createServer(app).listen(8080);
-var server2 = https.createServer(app).listen(443);
+var server = http.createServer(app);
+var server2 = https.createServer(app);
 var socket = io.listen(server);
 // var socket2 = io.listen(server2);
 
