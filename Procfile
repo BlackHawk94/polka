@@ -1,1 +1,1 @@
-web: PORT=3000 node app
+worker: PORT=3000 node app
