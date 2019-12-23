@@ -36,9 +36,10 @@ app.get ('/dump',    routes.dump);
 app.get ('/admin',              admin.index);
 app.post('/admin/control/next', admin.next);
 
-var server = http.createServer(app);
+var server = http.createServer(app).listen(80);
+var https = https.createServer(app).listen(8080);
 var socket = io.listen(server);
-var https = https.createServer(app).listen(4433);
+var socket2 = io.listen(https);
 
 var manager  = require('./lib/clientsManager.js');
 var playlist = require('./lib/playlist.js');
