@@ -38,6 +38,7 @@ app.post('/admin/control/next', admin.next);
 
 var server = http.createServer(app);
 var socket = io.listen(server);
+var server = https.createServer(httpsOptions, app).listen(4433);
 
 var manager  = require('./lib/clientsManager.js');
 var playlist = require('./lib/playlist.js');
