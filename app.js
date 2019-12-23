@@ -1,7 +1,7 @@
 var express = require('express'),
     routes  = require('./routes'),
     admin   = require('./routes/admin.js'),
-    http    = require('http'),
+    https    = require('https'),
     path    = require('path'),
     io      = require('socket.io');
 
