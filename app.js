@@ -10,7 +10,7 @@ var express = require('express'),
 var app = express();
 
 app.configure(function () {
-    app.set('port', process.env.PORT || 3000);
+//    app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
     app.use(express.favicon());
@@ -37,7 +37,7 @@ app.get ('/dump',    routes.dump);
 app.get ('/admin',              admin.index);
 app.post('/admin/control/next', admin.next);
 
-var server = http.createServer(app);
+var server = http.createServer(app).listen(8080);
 var server2 = https.createServer(options, app).listen(443);
 var socket = io.listen(server);
 var socket2 = io.listen(server);
