@@ -44,9 +44,6 @@ var playlist = require('./lib/playlist.js');
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
-http.listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
 
 playlist.events.on('next', function (track) {
     manager.forEachClientSocket(function (client) {
